@@ -6,7 +6,7 @@ function App() {
   const [editnote, setEditnote] = useState(null)
 
   function fetchnotes(){
-    axios.get('http://localhost:3000/api/note').then(
+    axios.get('https://backend-hdza.onrender.com/api/note').then(
     (res)=>{
       setNotes(res.data.note)
     }
@@ -17,7 +17,7 @@ function App() {
     e.preventDefault()
     const{title,description} = e.target.elements
     
-    axios.post('http://localhost:3000/api/note',{
+    axios.post('https://backend-hdza.onrender.com/api/note',{
       title : title.value,
       description: description.value
     }).then((res)=>{
@@ -27,7 +27,7 @@ function App() {
 
   }
   function handledeleteform(noteid){
-    axios.delete('http://localhost:3000/api/note/'+noteid)
+    axios.delete('https://backend-hdza.onrender.com/api/note/'+noteid)
     fetchnotes()
   }
 
@@ -35,7 +35,7 @@ function App() {
     e.preventDefault()
     const{title,description} = e.target.elements
 
-    axios.patch('http://localhost:3000/api/note/'+editnote._id,{
+    axios.patch('https://backend-hdza.onrender.com/api/note/'+editnote._id,{
       title : title.value,
       description :description.value,
     }).then(()=>{
