@@ -1,39 +1,52 @@
-import React from 'react'
-import "./style/form.scss"
-import { Link } from 'react-router'
-import axios from 'axios'
-import { useState } from "react"
+import { useState } from 'react'
+import '../style/form.scss'
+import {Link, useNavigate} from 'react-router'
+import { useAuth } from '../hook/useAuth'
+import { Navigate } from 'react-router'
 
-const login = () => {
+const Login = () => {
 
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+    const{user,loading ,handleLogin} = useAuth()
+    
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
 
-  async function handleform(e) {
-    e.preventDefault()
+    const navigate = useNavigate()
 
-    await axios.post('http://localhost:3000/api/auth/login',{
-      username,password
-  },{
-    withCredentials:true
-  }).then(res =>{
-    console.log(res.data)
-  })
-  }
+    const handleSubmit = async(e)=>{
+       e.preventDefault()
+        await handleLogin(username,password)
+        console.log("user logged in")
+        navigate('/feed')
+    }
+    if(loading){
+        return <main><h1>loading....</h1></main>
+    }
 
   return (
     <main>
-      <div className="form-container">
-        <h1>Login</h1>
-      <form onSubmit={handleform}>
-        <input onInput={(e)=>{setUsername(e.target.value)}} type="text " name='username' placeholder='enter username' />
-        <input onInput={(e)=>{setPassword(e.target.value)}} type="password" name="password" placeholder='enter your password'/>
-        <button>login</button>
-      </form>
-      <p>dont have an account? <Link className='toggleAuthForm' to={'/register'}>Register</Link> </p>
-      </div>
+        <div className="form-container">
+            <form onSubmit={handleSubmit} >
+                <h1>Login</h1>
+                <input 
+                onInput={(e)=>{setUsername(e.target.value )}}
+                type="text" 
+                name='username' 
+                placeholder='enter username' 
+                id='username' />
+
+                <input onInput={(e)=>{setPassword(e.target.value)}}
+                 type='password'
+                 name='password'
+                 placeholder='enter password'
+                 id='password' />
+
+                <button>login</button>    
+            </form>
+            <p>dont have an account <Link className='toggleAuthForm' to={'/register'}>Register</Link></p>
+        </div>
     </main>
   )
 }
 
-export default login
+export default Login

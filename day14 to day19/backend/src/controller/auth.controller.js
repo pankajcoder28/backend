@@ -1,7 +1,7 @@
 const userModel = require('../models/user.model')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const cookieParser = require('cookie-parser')
+
 
  async function register(req,res){
     const{username , email,password,bio,profileImage} = req.body
@@ -40,7 +40,7 @@ async function login(req, res){
 
     const user = await userModel.findOne({
         $or: [{ username }, { email }]
-    });
+    }).select('+password');
 
     if (!user) {
         return res.status(404).json({
@@ -58,10 +58,27 @@ async function login(req, res){
 
     res.cookie('token', token);
 
-    return res.status(200).json({ message: "user logged in successfully" });
+    return res.status(200).json({ message: "user logged in successfully",user
+});
 }
+async function getme(req,res) {
+    const userId = req.user.id
 
-module.exports = {register , login }
+    const user = await userModel.findById(userId)
+
+    res.status(200).json({
+        user:{
+            username : user.username,
+            email : user.email,
+            bio : user.bio,
+            profileImage : user.profileImage
+        }
+    })
+} 
+
+
+
+module.exports = {register , login ,getme}
     
  
 
