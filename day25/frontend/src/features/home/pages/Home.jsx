@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <>
       <FaceExpression 
-         onClick={(expression)=>{handleGetSong({expression})}}
+         onClick={(expression)=>{handleGetSong({mood: expression})}}
       />
       <Player />
     </>

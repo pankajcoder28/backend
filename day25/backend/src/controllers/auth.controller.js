@@ -25,7 +25,7 @@ async function registerUser(req,res) {
 
     const token = jwt.sign({id : user._id ,username : user.username}, process.env.jwt_secret ,{expiresIn : '1d'})
 
-    res.cookie('token',token)
+    res.cookie('token', token, {httpOnly: true, maxAge: 24 * 60 * 60 * 1000})
 
     return res.status(201).json({
         message : "user registered succesfully"
@@ -55,7 +55,7 @@ async function loginUser(req,res) {
     
     const token = jwt.sign({id : user._id ,username : user.username}, process.env.jwt_secret ,{expiresIn : '1d'})
 
-    res.cookie('token',token)
+    res.cookie('token', token, {httpOnly: true, maxAge: 24 * 60 * 60 * 1000})
 
     return res.status(200).json({
         message : 'user loggedin successfully',
