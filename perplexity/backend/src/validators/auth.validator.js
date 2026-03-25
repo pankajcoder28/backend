@@ -24,7 +24,7 @@ export const registerValidation = [
     body('password')
         .notEmpty()
         .withMessage('Password is required')
-        .isLength({ min: 6 , max: 12 }),
+        .isLength({ min: 3 , max: 10 }),
        
     handleValidationErrors    
 ];

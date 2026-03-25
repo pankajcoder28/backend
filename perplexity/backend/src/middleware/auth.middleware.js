@@ -27,3 +27,5 @@ export async function authUser(req,res,next) {
      req.user = decoded
     next()
 }
+
+export default authUser
