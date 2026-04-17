@@ -31,7 +31,9 @@ export default function ChatInterface() {
     e.preventDefault();
     if (!inputValue.trim()) return;
 
-    const response = await axios.post("http://localhost:3000/invoke", {
+    const  API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000"; 
+
+    const response = await axios.post(`${API_URL/invoke}`, {
       input: inputValue
     })
 
