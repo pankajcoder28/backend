@@ -10,6 +10,7 @@ app.use(cors({
   credentials: true,
   methods: ['GET','POST']
 }))
+app.use(express.static("./public"))
 
 app.get('/',async(req,res)=>{
   const result = await rungraph("write a code for factorial in js ")
