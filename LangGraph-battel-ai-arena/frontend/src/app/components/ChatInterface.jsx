@@ -31,9 +31,8 @@ export default function ChatInterface() {
     e.preventDefault();
     if (!inputValue.trim()) return;
 
-    const  API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000"; 
 
-    const response = await axios.post(`${API_URL}/invoke`, {
+    const response = await axios.post("https://battel-arena.onrender.com/invoke", {
       input: inputValue
     })
 
