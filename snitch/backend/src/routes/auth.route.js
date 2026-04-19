@@ -1,10 +1,11 @@
-import {Router} from 'react-router-dom'
-import { userRegister } from '../controllers/auth.controller.js'
-import { registerValidate } from '../validators/auth.validator.js'
+import express from "express";
+import { login, register } from "../controllers/auth.controller.js";
+import { registerValidate, loginValidate } from "../validators/auth.validator.js";
 
-const router = Router()
+const router = express.Router();
 
-router.post('/register',registerValidate,register)
+router.post("/register", registerValidate, register);
+router.post("/login", loginValidate, login); 
 
-export default router
+export default router;
 

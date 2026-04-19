@@ -7,6 +7,7 @@ import { config } from "../config/config.js"
     const token = await jwt.sign({id: user._id},config.JWT_SECRET,{expiresIn: "7d"})
 
     res.cookie("token",token)
+
     res.status(200).json({
         message,
         success: true,
@@ -26,7 +27,7 @@ export const register = async (req,res)=>{
     const{fullname,email,password,contact,isSeller} = req.body
 
     try {
-        const existingUser = await userModel.findone({
+        const existingUser = await userModel.findOne({
             $or:[
                 {email},
                 {contact}
@@ -48,3 +49,26 @@ export const register = async (req,res)=>{
     }
 
 }
+
+export const login = async(req,res)=>{
+    const{email,password}= req.body
+
+    try{
+        const user = await userModel.findOne({email})
+
+        if(!user){
+            return res.status(400).json({message: "user does not exist"})
+        }
+        const passMatch = await user.comparePassword(password)
+
+        if(!passMatch){
+            return res.status(401).json({message: "invalid credentials"})
+        }
+
+        await sendTokenResponse(user,res,"user loged in successfully")
+    }
+    catch(error){
+        console.error(error)
+        return res.status(500).json({message: "server error"})
+    }
+}   

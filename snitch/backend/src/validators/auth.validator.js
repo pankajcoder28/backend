@@ -13,8 +13,14 @@ const validate = (req,res,next)=>{
 export const registerValidate = [
     body("fullname").isString().withMessage("a fullname is required"),
     body("email").isEmail().withMessage("a valid email is required"),
-    body("password").isLength({min:4}).withMessage("password must be at least 4 characters"),
-    body("contact").isNumeric.withMessage("a valid contact number is required"),
-    body("role").isBoolean().withMessage("isSeller must be a boolean value"),
+    body("password").isLength({min:4}).withMessage("password must be atleast 4 characters"),
+    body("contact").isString().notEmpty().withMessage("a valid contact number is required"),
+    body("isSeller").isString().optional().withMessage("isSeller must be a boolean value"),
     validate 
+]
+
+export const loginValidate = [
+    body("email").isEmail().withMessage("a valid email is required"),
+    body("password").isLength({min:4}).withMessage("password must be atleast 4 characters "),
+    validate
 ]
