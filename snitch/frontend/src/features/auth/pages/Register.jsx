@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../hook/useAuth.js';
 import {useNavigate} from 'react-router-dom'
+import Continuewithgoogle from '../components/Continuewithgoogle.jsx';
 
 const Register = () => {
   const {handleRegister} = useAuth()
@@ -47,16 +48,16 @@ const Register = () => {
         <div className="w-full max-w-md mx-auto space-y-12">
           
           {/* Brand Logo / Text (Optional) */}
-          <div className="font-[Manrope] text-2xl font-bold tracking-widest text-[#facc15] uppercase">
+          <div className=" text-3xl font-bold tracking-widest text-[#facc15] uppercase font-[system-ui]">
             SNITCH.
           </div>
 
           {/* Header Section */}
           <div className="space-y-4">
-            <h1 className="text-4xl lg:text-5xl font-semibold tracking-tight font-[Manrope] text-white">
+            <h1 className="text-4xl lg:text-5xl font-semibold tracking-tight font-[system-ui] text-white">
               Create <br /> Account
             </h1>
-            <p className="text-base lg:text-lg text-[#d1c6ab] font-light">
+            <p className="text-base lg:text-lg text-[#d1c6ab]  font-[system-ui]">
               Join us to explore a seamless experience.
             </p>
           </div>
@@ -113,7 +114,7 @@ const Register = () => {
 
             {/* Password */}
             <div className="space-y-2 group relative">
-              <label className="text-[10px] uppercase tracking-widest text-[#d1c6ab] ml-1">
+              <label className="text-[10px] uppercase tracking-widest text-[#d1c6ab] ml-1 ">
                 Password
               </label>
               <input
@@ -129,7 +130,7 @@ const Register = () => {
 
             {/* Is Seller Flag */}
             <div className="flex items-center space-x-3 ml-1 pt-1 pb-4">
-              <label className="relative flex cursor-pointer items-center rounded-full">
+              <label className="relative flex cursor-pointer items-center rounded-full ">
                 <input
                   type="checkbox"
                   name="isSeller"
@@ -154,7 +155,7 @@ const Register = () => {
                   </svg>
                 </span>
               </label>
-              <span className="text-sm font-medium text-[#e5e2e1]">
+              <span className="text-sm font-medium text-[#e5e2e1] font-[system-ui]">
                 I want to register as a seller
               </span>
             </div>
@@ -162,17 +163,17 @@ const Register = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full h-12 lg:h-14 bg-linear-to-br from-[#ffecb9] to-[#facc15] text-[#231b00] font-semibold tracking-wide rounded-full hover:shadow-[0_0_20px_rgba(250,204,21,0.3)] transition-all flex items-center justify-center transform active:scale-[0.98]"
+              className="w-full h-12 lg:h-14 bg-linear-to-br from-[#ffecb9] to-[#facc15] text-[#231b00] font-semibold tracking-wide rounded-full hover:shadow-[0_0_20px_rgba(250,204,21,0.3)] transition-all flex items-center justify-center transform active:scale-[0.98] cursor-pointer mt-4 font-[system-ui]"
             >
               Create Account
             </button>
           </form>
-
+            <Continuewithgoogle/>
           {/* Footer Link */}
           <div className="text-center pt-4">
-            <p className="text-[#a19a8a] text-sm">
+            <p className="text-[#a19a8a] text-m">
               Already have an account?{' '}
-              <Link to="/login" className="text-[#facc15] hover:text-[#ffecb9] transition-colors font-semibold">
+              <Link to="/login" className="text-[#facc15] hover:text-[#ffecb9] transition-colors font-semibold font-[system-ui]">
                 Log in
               </Link>
             </p>

@@ -72,3 +72,29 @@ export const login = async(req,res)=>{
         return res.status(500).json({message: "server error"})
     }
 }   
+
+export const googleCallback= async (req,res)=>{
+
+    const {emails,id,displayName,photos} = req.user
+    const email = emails[0].value
+    const photo = photos[0].value
+
+    let user = await userModel.findOne({email})
+
+    if(!user){
+        let user = await userModel.create({
+            email,
+            googleId: id,
+            fullname: displayName
+        })
+
+        const token = jwt.sign({id: user._id},config.JWT_SECRET,{expiresIn: '7d'})
+
+        res.cookie("token",token)
+
+        res.redirect("http://localhost:5173/")
+
+    }
+
+    res.redirect("http://localhost:5173/")
+}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../hook/useAuth.js';
 import {useNavigate} from 'react-router-dom'
+import Continuewithgoogle from '../components/Continuewithgoogle.jsx';
 
 
 const Login = () => {
@@ -36,16 +37,16 @@ const Login = () => {
         <div className="w-full max-w-md mx-auto space-y-12">
           
           {/* Brand Logo / Text */}
-          <div className="font-[Manrope] text-2xl font-bold tracking-widest text-[#facc15] uppercase">
+          <div className=" text-3xl font-bold tracking-widest font-[system-ui] text-[#facc15] uppercase">
             SNITCH.
           </div>
 
           {/* Header Section */}
           <div className="space-y-4">
-            <h1 className="text-4xl lg:text-5xl font-semibold tracking-tight font-[Manrope] text-white">
+            <h1 className="text-4xl lg:text-5xl font-semibold tracking-tight text-white font-[system-ui]">
               Welcome <br /> Back
             </h1>
-            <p className="text-base lg:text-lg text-[#d1c6ab] font-light">
+            <p className="text-base lg:text-lg text-[#d1c6ab] font-light font-[system-ui]">
               Enter your details to access your account.
             </p>
           </div>
@@ -92,17 +93,18 @@ const Login = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full h-12 lg:h-14 bg-linear-to-br from-[#ffecb9] to-[#facc15] text-[#231b00] font-semibold tracking-wide rounded-full hover:shadow-[0_0_20px_rgba(250,204,21,0.3)] transition-all flex items-center justify-center transform active:scale-[0.98] mt-4"
+              className="w-full h-12 lg:h-14 bg-linear-to-br from-[#ffecb9] to-[#facc15] text-[#231b00] font-semibold tracking-wide rounded-full hover:shadow-[0_0_20px_rgba(250,204,21,0.3)] transition-all flex items-center justify-center transform active:scale-[0.98] mt-4 font-[system-ui]"
             >
               Sign In
             </button>
           </form>
-
+            <Continuewithgoogle/>
           {/* Footer Link */}
           <div className="text-center pt-4">
+            
             <p className="text-[#a19a8a] text-sm">
               Don't have an account?{' '}
-              <Link to="/register" className="text-[#facc15] hover:text-[#ffecb9] transition-colors font-semibold">
+              <Link to="/register" className="text-[#facc15] hover:text-[#ffecb9] transition-colors font-semibold font-[system-ui]">
                 Register
               </Link>
             </p>
@@ -128,7 +130,7 @@ const Login = () => {
           <h2 className="text-white text-3xl font-[Manrope] font-semibold tracking-widest uppercase">
             Define Your Vibe
           </h2>
-          <p className="text-[#d1c6ab] mt-2 tracking-wide">
+          <p className="text-[#d1c6ab] mt-2 tracking-wide ">
             Lux streetwear curated for you.
           </p>
         </div>
