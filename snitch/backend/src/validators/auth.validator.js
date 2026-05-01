@@ -15,7 +15,7 @@ export const registerValidate = [
     body("email").isEmail().withMessage("a valid email is required"),
     body("password").isLength({min:4}).withMessage("password must be atleast 4 characters"),
     body("contact").isString().notEmpty().withMessage("a valid contact number is required"),
-    body("isSeller").isString().optional().withMessage("isSeller must be a boolean value"),
+    body("isSeller").optional().isBoolean().withMessage("isSeller must be a boolean value").toBoolean(),
     validate 
 ]
 

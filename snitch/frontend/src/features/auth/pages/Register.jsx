@@ -34,7 +34,7 @@ const Register = () => {
       fullname: formData.fullName,
       password: formData.password,
       contact: formData.contactNumber,
-      isSeller: formData.isSeller
+      role: formData.isSeller
     })
     
     navigate("/")
