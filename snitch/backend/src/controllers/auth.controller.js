@@ -24,7 +24,7 @@ import { config } from "../config/config.js"
 
 
 export const register = async (req,res)=>{
-    const{fullname,email,password,contact,isSeller} = req.body
+    const{fullname,email,password,contact,role} = req.body
 
     try {
         const existingUser = await userModel.findOne({
@@ -38,7 +38,7 @@ export const register = async (req,res)=>{
         }
         const user = userModel.create({
             fullname,contact,password,email,
-            role: isSeller ? "seller": "buyer"
+            role: role ? "seller": "buyer"
         })
 
         await sendTokenResponse(user,res,"user registered successfully");

@@ -15,7 +15,7 @@ export const authenticateSeller = async (req,res,next)=>{
        const user = await userModel.findById(decoded.id)
         
        if(!user){
-        res.status(401).json({message: "unauthorised"})
+            res.status(401).json({message: "unauthorised"})
        }
 
        if(decoded.role !== 'seller'){

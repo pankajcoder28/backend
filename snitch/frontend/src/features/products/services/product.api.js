@@ -11,7 +11,7 @@ export const createProduct = async (formData)=>{
 }
 
 export const getSellerProduct = async ()=>{
-    const response = await productApiInstance.post('/getproduct')
+    const response = await productApiInstance.get('/getproduct')
 
     return response.data
 }
