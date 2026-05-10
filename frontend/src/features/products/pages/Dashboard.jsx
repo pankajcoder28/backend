@@ -26,11 +26,12 @@ const ProductCard = ({ product }) => {
   const [activeImg, setActiveImg] = useState(0)
   const images = product.images || []
   const hasImages = images.length > 0
+  const  navigate = useNavigate()
 
   return (
-    <div className="bg-white rounded-2xl overflow-hidden border border-[#EFEFED] shadow-sm
+    <div onClick={()=>{navigate(`/seller/product/${product._id}`)}} className="bg-white rounded-2xl overflow-hidden border border-[#EFEFED] shadow-sm
                     transition-all duration-300 ease-out hover:-translate-y-1
-                    hover:shadow-[0_8px_32px_rgba(30,58,95,0.13)] flex flex-col">
+                    hover:shadow-[0_8px_32px_rgba(30,58,95,0.13)], flex flex-col cursor-pointer">
 
       {/* ── Image area ─────────────────────────────────────── */}
       <div className="relative aspect-4/3 bg-[#F5F5F3] overflow-hidden">
@@ -81,7 +82,7 @@ const ProductCard = ({ product }) => {
       </div>
 
       {/* ── Content ────────────────────────────────────────── */}
-      <div className="flex flex-col gap-2 px-5 py-[18px] flex-1">
+      <div className="flex flex-col gap-2 px-5 py-4.5 flex-1">
         <h3 className="m-0 text-[15px] font-bold text-[#1A1A1A] tracking-tight leading-snug
                        truncate">
           {product.title}
@@ -112,7 +113,7 @@ const ProductCard = ({ product }) => {
 const EmptyState = ({ onAdd }) => (
   <div className="col-span-full flex flex-col items-center justify-center py-24 gap-5 text-center">
     <div className="w-18 h-18 rounded-full bg-[#EFF6FF] flex items-center justify-center
-                    w-[72px] h-[72px]">
+                    w-18 h-18">
       <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
         stroke="#1E3A5F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
