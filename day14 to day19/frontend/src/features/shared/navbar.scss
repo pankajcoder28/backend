@@ -1,0 +1,31 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    
+
+    button{
+        padding-block: 1rem;
+        padding-inline: 1rem;
+        border-radius: 50px;
+        background-color: rgb(217, 23, 23);
+        border: none;
+        color: aliceblue;
+        font-size: 13px;
+        transition: all ease 0.3s;
+    }
+    button:hover{
+        cursor: pointer;
+        background-color: rgb(183, 0, 0);
+    }
+    button:active{
+        transform: scale(0.95); 
+    }
+
+    .gradient-text {
+        font-size: 30px;
+        font-weight: bold;
+        background: linear-gradient(270deg, #984cca, #FD1D1D, #F77737 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}

@@ -1,0 +1,15 @@
+Authentication
+- register
+-login
+-logout
+-[otp based registration] 
+
+POST
+-create
+-can see the feed 
+-like posts (collection type)
+-save posts
+
+USERS 
+-follwers
+-following
